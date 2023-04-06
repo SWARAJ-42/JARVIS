@@ -5,6 +5,16 @@
 }
 
 canvas {
-    background-color: black; 
+    background: black; 
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
+input {
+    position: absolute;
+    width: calc(100% - 20px);
+    margin: 10px;
+    padding: 10px;
+    z-index: 100;
+}
