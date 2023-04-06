@@ -1,5 +1,6 @@
-window.addEventListener('load', function(){
+window.addEventListener('load', function () {
     const canvas = document.getElementById('canvas1');
+    const textInput = document.getElementById('textInput');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -12,7 +13,9 @@ window.addEventListener('load', function(){
     ctx.font = "80px Helvetica"
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
+
     const maxTextwidth = canvas.width * .8;
+    const lineHeight = 80;
 
     function wrapText(text) {
         let linesArray = [];
@@ -20,7 +23,7 @@ window.addEventListener('load', function(){
         let line = "";
         let words = text.split(" ");
         for (let i = 0; i < words.length; i++) {
-            let testLine = words[i] + " ";
+            let testLine = line + words[i] + " ";
             if (ctx.measureText(testLine).width > maxTextwidth) {
                 line = words[i] + " ";
                 linesCounter++;
@@ -29,10 +32,19 @@ window.addEventListener('load', function(){
             }
             linesArray[linesCounter] = line;
         }
+        let textHeight = lineHeight * linesCounter;
+        let textY = canvas.height / 2 - textHeight / 2;
+
         linesArray.forEach((el, index) => {
-            ctx.filltext(element, canvas.width / 2, canvas.height / 2 * 70);
+            ctx.fillText(el, canvas.width / 2, textY + index * lineHeight);
+            ctx.strokeText(el, canvas.width / 2, textY + index * lineHeight);
         });
-        console.log(linesArray);
+        // console.log(linesArray);
     }
-    wrapText("JARVIS");
-})
+    wrapText(text);
+
+    textInput.addEventListener('keyup', function (e) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        wrapText(e.target.value);
+    })
+});
