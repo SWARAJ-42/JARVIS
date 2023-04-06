@@ -5,8 +5,6 @@ window.addEventListener('load', function(){
     canvas.height = window.innerHeight;
 
     const text = "JARVIS";
-    const textX = canvas.width / 2;
-    const textY = canvas.height / 2;
     console.log(ctx);
     ctx.fillStyle = 'aqua';
     ctx.strokeStyle = "blue";
@@ -14,10 +12,27 @@ window.addEventListener('load', function(){
     ctx.font = "80px Helvetica"
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(text, textX, textY);
-    ctx.strokeText(text, textX, textY);
+    const maxTextwidth = canvas.width * .8;
 
     function wrapText(text) {
-        
+        let linesArray = [];
+        let linesCounter = 0;
+        let line = "";
+        let words = text.split(" ");
+        for (let i = 0; i < words.length; i++) {
+            let testLine = words[i] + " ";
+            if (ctx.measureText(testLine).width > maxTextwidth) {
+                line = words[i] + " ";
+                linesCounter++;
+            } else {
+                line = testLine;
+            }
+            linesArray[linesCounter] = line;
+        }
+        linesArray.forEach((el, index) => {
+            ctx.filltext(element, canvas.width / 2, canvas.height / 2 * 70);
+        });
+        console.log(linesArray);
     }
+    wrapText("JARVIS");
 })
