@@ -1,3 +1,4 @@
+let p = [];
 window.addEventListener('load', function () {
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d', {
@@ -44,8 +45,8 @@ window.addEventListener('load', function () {
 
             this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease;
             this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease;
-        }
 
+        }
     }
 
     class Effect {
@@ -84,9 +85,9 @@ window.addEventListener('load', function () {
             gradient.addColorStop(.3, 'red');
             gradient.addColorStop(.5, 'fuchsia');
             gradient.addColorStop(.7, 'purple');
-            this.context.fillStyle = "aqua";
+            this.context.fillStyle = "blue";
             this.context.lineWidth = 3;
-            this.context.strokeStyle = "aqua";
+            this.context.strokeStyle = "blue";
             this.context.font = this.fontsize + "px Orbitron"
             this.context.textAlign = 'center';
             this.context.textBaseline = 'middle';
@@ -129,6 +130,7 @@ window.addEventListener('load', function () {
                         const blue = pixels[index + 2];
                         const color = `rgb('${red}', '${green}', '${blue}')`;
                         this.particles.push(new Particle(this, x, y, color));
+                        p.push(new Particle(this, x, y, color));
                     }
                 }
             }
@@ -139,8 +141,8 @@ window.addEventListener('load', function () {
                 particle.draw();
             });
         }
-        
-        resize (width, height) {
+
+        resize(width, height) {
             this.canvasWidth = width;
             this.canvasHeight = height;
             this.textX = this.canvasWidth / 2;
@@ -153,19 +155,39 @@ window.addEventListener('load', function () {
     const effect = new Effect(ctx, canvas.width, canvas.height);
     effect.wrapText(text);
     effect.render();
-    
+    let limit = canvas.width * (.18);
+    console.log(p);
+    this.window.addEventListener('mousemove', function (e) {
+        if (e.x <= canvas.width / 2 + limit && e.x >= canvas.width / 2 - limit && e.y <= canvas.height / 2 + limit && e.y >= canvas.height / 2 - limit) {
+            for (let i = 0; i < p.length; i++) {
+                let particle = p[i];
+                if (i % 8 == 0) {
+                    particle.effect.context.lineWidth = .2;
+                    particle.effect.context.strokeStyle = 'blue';
+                    particle.effect.context.beginPath();
+                    particle.effect.context.moveTo(particle.originX, particle.originY)
+                    particle.effect.context.lineTo(e.x, e.y);
+                    particle.effect.context.stroke();
+                }
+            }
+
+        }
+    })
+
+
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         effect.render();
         requestAnimationFrame(animate);
     }
-    
+
     animate();
-    
-    this.window.addEventListener('resize', function(){
+
+    this.window.addEventListener('resize', function () {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         effect.resize(canvas.width, canvas.height);
         effect.wrapText(text);
     })
 });
+
