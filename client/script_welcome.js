@@ -55,7 +55,7 @@ window.addEventListener('load', function () {
             this.canvasHeight = canvasHeight;
             this.textX = this.canvasWidth / 2;
             this.textY = this.canvasHeight / 2;
-            this.fontsize = this.canvasWidth / 12;
+            this.fontsize = this.canvasWidth / 15;
             this.lineHeight = this.fontsize * .8;
             this.maxTextwidth = this.canvasWidth * .8;
             this.verticalOffset = 0;
@@ -139,17 +139,33 @@ window.addEventListener('load', function () {
                 particle.draw();
             });
         }
+        
+        resize (width, height) {
+            this.canvasWidth = width;
+            this.canvasHeight = height;
+            this.textX = this.canvasWidth / 2;
+            this.textY = this.canvasHeight / 2;
+            this.maxTextwidth = this.canvasWidth * .8;
+            this.fontsize = this.canvasWidth / 15;
+        }
     }
 
     const effect = new Effect(ctx, canvas.width, canvas.height);
     effect.wrapText(text);
     effect.render();
-
+    
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         effect.render();
         requestAnimationFrame(animate);
     }
-
+    
     animate();
+    
+    this.window.addEventListener('resize', function(){
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        effect.resize(canvas.width, canvas.height);
+        effect.wrapText(text);
+    })
 });
