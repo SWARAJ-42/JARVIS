@@ -5,8 +5,15 @@
     font-family: 'Orbitron', sans-serif;
 }
 
-canvas {
+#canvas1 {
     background: black; 
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#canvas2 {
+    background: none; 
     position: absolute;
     top: 0;
     left: 0;

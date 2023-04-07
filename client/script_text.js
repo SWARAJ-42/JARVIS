@@ -55,7 +55,7 @@ window.addEventListener('load', function () {
             this.canvasHeight = canvasHeight;
             this.textX = this.canvasWidth / 2;
             this.textY = this.canvasHeight / 2;
-            this.fontsize = this.canvasWidth / 15;
+            this.fontsize = this.canvasWidth / 17;
             this.lineHeight = this.fontsize * .8;
             this.maxTextwidth = this.canvasWidth * .8;
             this.verticalOffset = 0;
@@ -146,7 +146,7 @@ window.addEventListener('load', function () {
             this.textX = this.canvasWidth / 2;
             this.textY = this.canvasHeight / 2;
             this.maxTextwidth = this.canvasWidth * .8;
-            this.fontsize = this.canvasWidth / 15;
+            this.fontsize = this.canvasWidth / 17;
         }
     }
 
