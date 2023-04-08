@@ -10,7 +10,8 @@ window.addEventListener('load', function () {
     const text = "JARVIS";
 
     class Particle {
-        constructor(effect, x, y, color) {
+        constructor(effect, x, y, color, index) {
+            this.index = index;
             this.effect = effect;
             this.x = Math.random() * this.effect.canvasWidth;
             this.y = Math.random() * this.effect.canvasHeight;
@@ -26,6 +27,7 @@ window.addEventListener('load', function () {
             this.distance = 0;
             this.friction = Math.random() * 0.6 + .15;
             this.ease = Math.random() * .05 + .005;
+            
         }
         draw() {
             this.effect.context.fillStyle = this.color;
@@ -45,6 +47,18 @@ window.addEventListener('load', function () {
 
             this.x += (this.vx *= this.friction) + (this.originX - this.x) * this.ease;
             this.y += (this.vy *= this.friction) + (this.originY - this.y) * this.ease;
+            this.limit = effect.canvasWidth * (.1);
+            this.cond1 = effect.mouse.x <= this.effect.canvasWidth / 2 + this.limit && effect.mouse.x >= this.effect.canvasWidth / 2 - this.limit;
+            this.cond2 = effect.mouse.y <= this.effect.canvasHeight / 2 + this.limit && effect.mouse.y >= this.effect.canvasHeight / 2 - this.limit;
+           
+            if ( this.cond1 && this.cond2 && this.index % 16 == 0) {
+                effect.context.lineWidth = .2;
+                effect.context.strokeStyle = 'blue';
+                effect.context.beginPath();
+                effect.context.moveTo(this.originX, this.originY)
+                effect.context.lineTo(effect.mouse.x, effect.mouse.y);
+                effect.context.stroke();
+            }
 
         }
     }
@@ -129,8 +143,7 @@ window.addEventListener('load', function () {
                         const green = pixels[index + 1];
                         const blue = pixels[index + 2];
                         const color = `rgb('${red}', '${green}', '${blue}')`;
-                        this.particles.push(new Particle(this, x, y, color));
-                        p.push(new Particle(this, x, y, color));
+                        this.particles.push(new Particle(this, x, y, color, index));
                     }
                 }
             }
@@ -156,7 +169,6 @@ window.addEventListener('load', function () {
     effect.wrapText(text);
     effect.render();
     let limit = canvas.width * (.18);
-    console.log(p);
     this.window.addEventListener('mousemove', function (e) {
         if (e.x <= canvas.width / 2 + limit && e.x >= canvas.width / 2 - limit && e.y <= canvas.height / 2 + limit && e.y >= canvas.height / 2 - limit) {
             for (let i = 0; i < p.length; i++) {
