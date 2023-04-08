@@ -60,7 +60,7 @@ function drawBalls() {
 function mousemove(e) {
 	Mouse.x = e.x;
 	Mouse.y = e.y;
-    for (let i = 0; i < 3; i++) {
+    for (let i = 1; i < 3; i++) {
         particleArray.push(new Particle());
     }
 }
@@ -94,9 +94,8 @@ class Particle {
         this.x += this.speedX;
         this.y += this.speedY;
 		if (this.size > 0.1) {
-            this.size -= .03
+            this.size -= .06
 		}
-        
 	}
 }
 
