@@ -51,7 +51,7 @@ window.addEventListener('load', function () {
             this.cond1 = effect.mouse.x <= this.effect.canvasWidth / 2 + this.limit && effect.mouse.x >= this.effect.canvasWidth / 2 - this.limit;
             this.cond2 = effect.mouse.y <= this.effect.canvasHeight / 2 + this.limit && effect.mouse.y >= this.effect.canvasHeight / 2 - this.limit;
            
-            if ( this.cond1 && this.cond2 && this.index % 16 == 0) {
+            if ( this.cond1 && this.cond2 && this.index % 64 == 0) {
                 effect.context.lineWidth = .2;
                 effect.context.strokeStyle = 'blue';
                 effect.context.beginPath();

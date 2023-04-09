@@ -1,15 +1,15 @@
-var canvas3=document.getElementById("canvas3")
-var c=canvas3.getContext("2d")
+let canvas3 = document.getElementById("canvas3")
+let c = canvas3.getContext("2d")
 
-canvas3.width=window.innerWidth;
-canvas3.height=window.innerHeight;
+canvas3.width = window.innerWidth;
+canvas3.height = window.innerHeight;
 
-mouse={
-    x: innerWidth/2,
-    y: innerHeight/2
+mouse = {
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2
 }
 
-colorArray=[
+colorArray = [
     '#00bdff',
     '#4d39ce',
     '#888cff'
@@ -20,13 +20,20 @@ colorArray=[
 //     mouse.y=event.y
 // })
 
-addEventListener('resize',function() {
-    canvas3.width=window.innerWidth;
-    canvas3.height=window.innerHeight;
+addEventListener('resize', function () {
+    canvas3.width = window.innerWidth;
+    canvas3.height = window.innerHeight;
+    mouse = {
+        x: canvas3.width / 2,
+        y: canvas3.height / 2
+    }
+    particles.forEach(particle => {
+        particle.resize(canvas3.width);
+    });
 })
 
-function randomInt(start,end) {
-    return Math.floor(Math.random()*end+start)
+function randomInt(start, end) {
+    return Math.floor(Math.random() * end + start)
 }
 
 class Particle {
@@ -36,8 +43,8 @@ class Particle {
         this.radius = radius;
         this.color = color;
         this.radians = Math.random() * Math.PI * 2;
-        this.velocity = 0.05;
-        this.a = randomInt(270, 70);
+        this.velocity = 0.01 * Math.pow(-1, randomInt(1,2));
+        this.a = randomInt(canvas3.width / 7, canvas3.width / 20);
         this.lastMouse = {
             x: x,
             y: y
@@ -51,7 +58,9 @@ class Particle {
             c.lineTo(this.x, this.y);
             c.stroke();
         };
-
+        this.resize = (width) => {
+            this.a = randomInt(width / 7, width / 20);
+        }
         this.update = () => {
             this.lastPoint = {
                 x: this.x,
@@ -69,21 +78,21 @@ class Particle {
     }
 }
 
-let particles=[]
-var color;
-var radius;
-for (let index = 0; index < 50; index++) {
-    color=randomInt(0,2);
-    color=colorArray[color];
-    radius=Math.random()*10+1;
-    particles.push(new Particle(innerWidth/2,innerHeight/2,radius,color));
-    
+let particles = []
+let color;
+let radius;
+for (let index = 0; index < 100; index++) {
+    color = randomInt(0, 2);
+    color = colorArray[color];
+    radius = Math.random() * 10 + 1;
+    particles.push(new Particle(innerWidth / 2, innerHeight / 2, radius, color));
+
 }
 
 function animate() {
     requestAnimationFrame(animate);
-    c.fillStyle="rgba(0,0,0,0.05)"
-    c.fillRect(0,0,innerWidth,innerHeight);
+    c.fillStyle = "rgba(0,0,0,0.05)"
+    c.fillRect(0, 0, innerWidth, innerHeight);
     particles.forEach(element => {
         element.update()
     });
