@@ -51,7 +51,7 @@ window.addEventListener('load', function () {
             this.cond1 = effect.mouse.x <= this.effect.canvasWidth / 2 + this.limit && effect.mouse.x >= this.effect.canvasWidth / 2 - this.limit;
             this.cond2 = effect.mouse.y <= this.effect.canvasHeight / 2 + this.limit && effect.mouse.y >= this.effect.canvasHeight / 2 - this.limit;
            
-            if ( this.cond1 && this.cond2 && this.index % 64 == 0) {
+            if ( this.cond1 && this.cond2 && this.index % 16 == 0) {
                 effect.context.lineWidth = .2;
                 effect.context.strokeStyle = 'blue';
                 effect.context.beginPath();
@@ -83,7 +83,7 @@ window.addEventListener('load', function () {
             // });
             // particles text
             this.particles = [];
-            this.gap = 3;
+            this.gap = 5;
             this.mouse = {
                 radius: this.fontsize * 100,
                 x: 0,
@@ -169,22 +169,22 @@ window.addEventListener('load', function () {
     effect.wrapText(text);
     effect.render();
     let limit = canvas.width * (.18);
-    this.window.addEventListener('mousemove', function (e) {
-        if (e.x <= canvas.width / 2 + limit && e.x >= canvas.width / 2 - limit && e.y <= canvas.height / 2 + limit && e.y >= canvas.height / 2 - limit) {
-            for (let i = 0; i < p.length; i++) {
-                let particle = p[i];
-                if (i % 8 == 0) {
-                    particle.effect.context.lineWidth = .2;
-                    particle.effect.context.strokeStyle = 'blue';
-                    particle.effect.context.beginPath();
-                    particle.effect.context.moveTo(particle.originX, particle.originY)
-                    particle.effect.context.lineTo(e.x, e.y);
-                    particle.effect.context.stroke();
-                }
-            }
+    // this.window.addEventListener('mousemove', function (e) {
+    //     if (e.x <= canvas.width / 2 + limit && e.x >= canvas.width / 2 - limit && e.y <= canvas.height / 2 + limit && e.y >= canvas.height / 2 - limit) {
+    //         for (let i = 0; i < p.length; i++) {
+    //             let particle = p[i];
+    //             if (i % 8 == 0) {
+    //                 particle.effect.context.lineWidth = .2;
+    //                 particle.effect.context.strokeStyle = 'blue';
+    //                 particle.effect.context.beginPath();
+    //                 particle.effect.context.moveTo(particle.originX, particle.originY)
+    //                 particle.effect.context.lineTo(e.x, e.y);
+    //                 particle.effect.context.stroke();
+    //             }
+    //         }
 
-        }
-    })
+    //     }
+    // })
 
 
     function animate() {
