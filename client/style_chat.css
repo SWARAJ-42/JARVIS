@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Orbitron", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   color: aqua;
 }
 
@@ -14,8 +14,9 @@ body {
 
 #app {
   width: 100vw;
-  height: 100vh;
+  height: 96vh;
   background: black;
+  margin-top: 30px;
 
   display: flex;
   flex-direction: column;
@@ -114,7 +115,7 @@ body {
 form {
   width: 100%;
   max-width: 1280px;
-  margin: 20px auto;
+  margin: 10px auto;
   padding: 10px;
   background: black;
 
@@ -133,6 +134,7 @@ textarea {
   border-radius: 5px;
   border: none;
   outline: none;
+  font-family: 'Orbitron', sans-serif;
 }
 
 button {
@@ -145,4 +147,18 @@ button {
 form img {
   width: 30px;
   height: 30px;
+}
+
+#link {
+  position: absolute;
+  text-decoration: none;
+  color: aqua;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  top: 10px;
+  left: 10px;
+}
+
+#link:hover {
+  color: blue;
 }
