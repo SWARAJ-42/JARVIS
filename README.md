@@ -26,7 +26,9 @@ You will also require the ChatGPT API
 <img src="./client/README/Screenshot (20).png">
 <img src="./client/README/Screenshot (21).png">
 
-- Copy the api key then paste here 
+- Copy the api key then paste here
+<img src="./client/README/Screenshot (22).png">
+
 
 ### Installing
 
