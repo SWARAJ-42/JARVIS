@@ -7,7 +7,7 @@ canvas.width = window.innerWidth
 
 t = canvas.height / 2 + canvas.width / 40
 w = canvas.width / 2 - canvas.width / 2 * .25
-f = canvas.width / 55
+f = canvas.width / 80
 text.style.top = `${t}px`
 text.style.left = `${w}px`
 text.style.textAlign = "center"
@@ -16,7 +16,7 @@ text.style.fontSize = `${f}px`
 let resize = async (width, height) => {
     t = height / 2 + width / 40
     w = width / 2 - width / 2 * .25
-    f = width / 55
+    f = width / 80
     text.style.display = "none"
     text.style.top = `${t}px`
     text.style.left = `${w}px`
