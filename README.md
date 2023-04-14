@@ -38,9 +38,14 @@ To install vite for the project open the project and open terminal inside client
 
     npm install vite@latest
 
-To start the program, move to the client folder and run.
+To start the program, 
+- move to the client folder and run.
 
     npm run dev
+
+- move to the server folder in a new terminal and run.
+
+    npm run server
 
 
 ## Authors

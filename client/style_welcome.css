@@ -18,3 +18,13 @@
     position: absolute;
     color: aqua;
 }
+
+#link {
+    position: absolute;
+    color: aqua;
+    text-decoration: none;
+}
+
+#link:hover {
+    color: blue;
+}
