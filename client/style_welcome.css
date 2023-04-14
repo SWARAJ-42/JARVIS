@@ -13,3 +13,8 @@
     /* background:radial-gradient(blue, black); */
     background: black;
 }
+
+#text {
+    position: absolute;
+    color: aqua;
+}
