@@ -4,6 +4,7 @@ let canvas = document.getElementById("canvas1");
 let stopBtn = document.getElementById("stop-btn");
 
 stopBtn.style.display = "none"
+text.style.display = "none"
 
 let ctx = canvas.getContext('2d')
 
@@ -71,7 +72,9 @@ let resize = async (width, height) => {
     stopBtn.style.fontSize = `${bf}px`
 
     setTimeout(() => {
-        text.style.display = "inline"
+        if (speechRec == true) {
+            text.style.display = "inline"
+        }
         link.style.display = "inline"
     }, 1000)
 }

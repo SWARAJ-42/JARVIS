@@ -12,9 +12,11 @@ recognition.continuous = true;
 recognition.lang = "en-US";
 recognition.interimResults = false;
 recognition.maxAlternatives = 1;
+let speechRec;
 
 startBtn.addEventListener("click", () => {
     recognition.start();
+    speechRec = true;
     indicator.style.display = "inline"
     startBtn.style.display = "none"
 })
@@ -22,11 +24,13 @@ stopBtn.addEventListener("click", () => {
     synth.cancel()
     stopBtn_1.style.display = "none"
     recognition.start();
+    speechRec = true;
 })
 
 let utter = new SpeechSynthesisUtterance("Hi there, I am Jarvis")
 utter.onend = () => {
     recognition.start();
+    speechRec = true;
     indicator.style.display = "inline"
     startBtn.style.display = "none"
     stopBtn_1.style.display = "none";
@@ -37,6 +41,7 @@ recognition.onresult = (e) => {
     const transcript = e.results[e.results.length - 1][0].transcript.trim();
     if (transcript === "hello") {
         recognition.stop();
+        speechRec = false;
         indicator.style.display = "none"
         utter.text = "Aye Sir !";
         console.log(transcript);
@@ -46,6 +51,7 @@ recognition.onresult = (e) => {
     else {
         let istext_mode = (transcript === "Jarvis text mode on");
         recognition.stop();
+        speechRec = false;
         indicator.style.display = "none"
         // fetch data from server -> bot's response
         let answer = async () => {
@@ -84,11 +90,11 @@ recognition.onresult = (e) => {
     }
     
     this.window.addEventListener('resize', function () {
-        if(recognition.start()) {
-            indicator.style.display = "none"
+        if(speechRec == true) {
+            indicator.style.display = "inline"
         }
         else {
-            indicator.style.display = "inline"
+            indicator.style.display = "none"
         }
 
 })
