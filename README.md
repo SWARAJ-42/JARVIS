@@ -1,5 +1,6 @@
 # JARVIS
 <img src="./client/README/main.png">
+<img src="./client/README/main1.png">
 <img src="./client/README/main_text.png">
 
 JARVIS is an artificial intelligent interactive bot who recognizes human speech and gives answers to all his queries just like Chatgpt but more interactive. It can perform system automation tasks and browser automation too. The AI is made using CHATGPT API
