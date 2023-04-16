@@ -24,6 +24,7 @@ stopBtn.addEventListener("click", () => {
     synth.cancel()
     stopBtn_1.style.display = "none"
     recognition.start();
+    indicator.style.display = "inline"
     speechRec = true;
 })
 
