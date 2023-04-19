@@ -6,8 +6,8 @@
 JARVIS is an artificial intelligent interactive bot who recognizes human speech and gives answers to all his queries just like Chatgpt but more interactive. It can perform system automation tasks and browser automation too. The AI is made using CHATGPT API
 
 ## Note
--Presently only the chat mode is functional and the program can chat with you in text mode and interactive mode only. Command mode will be updated soon
--The webkitspeechRecognition works only on chrome so it is recommended to use chrome.
+- Presently only the chat mode is functional and the program can chat with you in text mode and interactive mode only. Command mode will be updated soon
+- The webkitspeechRecognition works only on chrome so it is recommended to use chrome.
 
 ## Getting Started
 
