@@ -8,14 +8,7 @@ JARVIS is an artificial intelligent interactive bot who recognizes human speech 
 ## Note
 - Presently only the chat mode is functional and the program can chat with you in text mode and interactive mode only. Command mode will be updated soon
 - The module webkitSpeechRecognition works only with chrome so it is recommended to use chrome to run the program.
-## Getting Started
 
-After cloning the project open the project folder run the following commands in terminal
-```
-cd client
-
-npm run dev
-```
 
 ### Prerequisites
 
@@ -43,7 +36,8 @@ To install vite for the project open the project and open terminal inside client
 
     npm install vite@latest
 
-To start the program, 
+### Usage
+
 - move to the client folder and run.
 
 ```
