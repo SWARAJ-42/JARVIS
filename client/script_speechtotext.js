@@ -40,7 +40,7 @@ utter.onend = () => {
 
 recognition.onresult = (e) => {
     const transcript = e.results[e.results.length - 1][0].transcript.trim();
-    if (transcript === "hello") {
+    if (transcript === "Jarvis command mode on") {
         recognition.stop();
         speechRec = false;
         indicator.style.display = "none"

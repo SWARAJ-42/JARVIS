@@ -27,7 +27,7 @@ window.addEventListener('load', function () {
             this.distance = 0;
             this.friction = Math.random() * 0.6 + .15;
             this.ease = Math.random() * .05 + .005;
-            
+
         }
         draw() {
             this.effect.context.fillStyle = this.color;
@@ -50,8 +50,8 @@ window.addEventListener('load', function () {
             this.limit = effect.canvasWidth * (.1);
             this.cond1 = effect.mouse.x <= this.effect.canvasWidth / 2 + this.limit && effect.mouse.x >= this.effect.canvasWidth / 2 - this.limit;
             this.cond2 = effect.mouse.y <= this.effect.canvasHeight / 2 + this.limit && effect.mouse.y >= this.effect.canvasHeight / 2 - this.limit;
-           
-            if ( this.cond1 && this.cond2 && this.index % 16 == 0) {
+
+            if (this.cond1 && this.cond2 && this.index % 16 == 0) {
                 effect.context.lineWidth = .2;
                 effect.context.strokeStyle = 'blue';
                 effect.context.beginPath();

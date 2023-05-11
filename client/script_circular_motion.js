@@ -43,7 +43,7 @@ class Particle {
         this.radius = radius;
         this.color = color;
         this.radians = Math.random() * Math.PI * 2;
-        this.velocity = 0.01 * Math.pow(-1, randomInt(1,2));
+        this.velocity = 0.01 * Math.pow(-1, randomInt(1, 2));
         this.a = randomInt(canvas3.width / 7, canvas3.width / 20);
         this.lastMouse = {
             x: x,
